@@ -60,7 +60,7 @@ body::after {
 .cursor-dot{width:4px;height:4px;background:var(--accent);transition:transform .1s}
 .cursor.hover{width:52px;height:52px;border-color:var(--accent);background:var(--accent-dim)}
 .cursor.click{transform:translate(-50%,-50%) scale(.85)}
-@media(hover:none){.cursor,.cursor-dot{display:none}}
+@media(hover:none), (pointer:coarse), (max-width:900px){.cursor,.cursor-dot{display:none!important}}
 
 /* ====== LOADER ====== */
 .loader{position:fixed;inset:0;background:var(--black);z-index:10000;display:flex;align-items:center;justify-content:center;transition:opacity .7s var(--ease),visibility .7s}

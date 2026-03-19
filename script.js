@@ -43,7 +43,7 @@
   function initCursor() {
     const cursor = document.getElementById('cursor');
     const dot = document.getElementById('cursor-dot');
-    if (!cursor || window.matchMedia('(hover:none)').matches) return;
+    if (!cursor || window.matchMedia('(hover:none), (pointer:coarse), (max-width:900px)').matches) return;
     let mx = 0, my = 0, cx = 0, cy = 0;
     window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`; });
     function lerp(a, b, n) { return (1 - n) * a + n * b; }
