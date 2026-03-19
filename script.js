@@ -53,24 +53,24 @@
     (function animate() {
       cx = lerp(cx, mx, 0.12); cy = lerp(cy, my, 0.12);
       
-      // Magnetic effect for buttons
-      let magneticIdx = -1;
-      targets.forEach((el, i) => {
-        if (el.classList.contains('btn-main') || el.classList.contains('nav-wa') || el.classList.contains('nav-cart-btn')) {
-          const rect = el.getBoundingClientRect();
-          const ex = rect.left + rect.width / 2;
-          const ey = rect.top + rect.height / 2;
-          const dist = Math.hypot(mx - ex, my - ey);
-          if (dist < 80) {
-            const pullX = (mx - ex) * 0.35;
-            const pullY = (my - ey) * 0.35;
-            el.style.transform = `translate(${pullX}px, ${pullY}px)`;
-            magneticIdx = i;
-          } else {
-            el.style.transform = '';
+      // Magnetic effect for buttons (Only on Desktop/Hover devices)
+      if (window.matchMedia('(hover:hover)').matches) {
+        targets.forEach((el) => {
+          if (el.classList.contains('btn-main') || el.classList.contains('nav-wa') || el.classList.contains('nav-cart-btn')) {
+            const rect = el.getBoundingClientRect();
+            const ex = rect.left + rect.width / 2;
+            const ey = rect.top + rect.height / 2;
+            const dist = Math.hypot(mx - ex, my - ey);
+            if (dist < 80) {
+              const pullX = (mx - ex) * 0.35;
+              const pullY = (my - ey) * 0.35;
+              el.style.transform = `translate(${pullX}px, ${pullY}px)`;
+            } else {
+              el.style.transform = '';
+            }
           }
-        }
-      });
+        });
+      }
 
       cursor.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`;
       requestAnimationFrame(animate);
