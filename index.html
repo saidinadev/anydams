@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ANYDAMS &#8212; Anything Damsik</title>
+  <meta name="description" content="ANYDAMS adalah brand streetwear lokal Jakarta. Original design, limited drops, authentic culture."/>
+  <meta property="og:title" content="ANYDAMS &#8212; Anything Damsik"/>
+  <meta property="og:description" content="Streetwear Jakarta. Bukan ikut-ikutan, bukan setengah-setengah."/>
+  <meta property="og:image" content="ootd.jpg"/>
+  <meta name="theme-color" content="#080808"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&amp;family=Barlow:wght@300;400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursor-dot"></div>
+
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <div class="loader-logo">AD</div>
+    <div class="loader-bar"><div class="loader-fill" id="loader-fill"></div></div>
+    <div class="loader-text">LOADING COLLECTION</div>
+  </div>
+</div>
+
+<nav id="navbar">
+  <div class="nav-left"><a href="#beranda" class="nav-logo">ANYDAMS</a></div>
+  <div class="nav-center">
+    <a href="#beranda" class="nav-link active">Home</a>
+    <a href="#tentang" class="nav-link">About</a>
+    <a href="#koleksi" class="nav-link">Koleksi</a>
+    <a href="#lookbook" class="nav-link">Lookbook</a>
+    <a href="#info" class="nav-link">Info</a>
+  </div>
+  <div class="nav-right">
+    <button class="nav-cart-btn" id="cart-btn" aria-label="Cart">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="cart-count" id="cart-count">0</span>
+    </button>
+    <a href="https://wa.me/6281218216022" target="_blank" class="nav-wa">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      Order WA
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-overlay-inner">
+    <button class="search-close" id="search-close">&#10005;</button>
+    <div class="search-label">CARI PRODUK</div>
+    <input type="text" class="search-input" id="search-input" placeholder="ketik nama produk..." autocomplete="off"/>
+    <div class="search-results" id="search-results"></div>
+    <div class="search-tags">
+      <span class="tag" data-search="hoodie">Hoodie</span>
+      <span class="tag" data-search="pants">Pants</span>
+      <span class="tag" data-search="jaket">Jaket</span>
+      <span class="tag" data-search="topi">Cap</span>
+      <span class="tag" data-search="shoes">Sneakers</span>
+      <span class="tag" data-search="tshirt">T-Shirt</span>
+    </div>
+  </div>
+</div>
+
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-inner">
+    <a href="#beranda" class="mobile-link" data-num="01">Home</a>
+    <a href="#tentang" class="mobile-link" data-num="02">About</a>
+    <a href="#koleksi" class="mobile-link" data-num="03">Koleksi</a>
+    <a href="#lookbook" class="mobile-link" data-num="04">Lookbook</a>
+    <a href="#info" class="mobile-link" data-num="05">Info</a>
+    <a href="https://wa.me/6281218216022" class="mobile-link mobile-wa" target="_blank" data-num="&#8594;">WhatsApp Order</a>
+  </div>
+  <div class="mobile-menu-foot">
+    <span>ANYDAMS &#169; 2026</span>
+    <div class="mobile-socials">
+      <a href="https://instagram.com/anydams.id" target="_blank">IG</a>
+      <a href="https://tiktok.com/@anydams.id" target="_blank">TT</a>
+    </div>
+  </div>
+</div>
+
+<section id="beranda" class="hero">
+  <div class="hero-bg-text">ANYDAMS</div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-tag reveal">
+        <span class="tag-dot"></span>
+        <span>SS26 &#8212; Jakarta, Indonesia</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="hero-line reveal delay-1">ANY</span>
+        <span class="hero-line italic reveal delay-2">
+          <span class="word-rotator">
+            <span class="word-rotator-inner">
+              <span>DAMS.</span>
+              <span>AUTHENTIC.</span>
+              <span>ORIGINAL.</span>
+            </span>
+          </span>
+        </span>
+      </h1>
+      <p class="hero-sub reveal delay-3">Streetwear yang dibuat berbeda.<br>Bukan ikut-ikutan, bukan setengah-setengah.</p>
+      <div class="hero-actions reveal delay-4">
+        <a href="#koleksi" class="btn-main">Lihat Koleksi <span class="arrow">&#8594;</span></a>
+        <a href="#tentang" class="btn-line">Our Story</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-frame">
+        <div class="hero-img-label">OOTD / SS26</div>
+        <img src="ootd.jpg" alt="ANYDAMS OOTD SS26" class="hero-img"/>
+        <div class="hero-img-badge">
+          <div class="badge-line">LIMITED</div>
+          <div class="badge-line accent">DROP SS26</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-line">
+    <span class="scroll-text">SCROLL</span>
+    <div class="scroll-bar"><div class="scroll-bar-fill"></div></div>
+  </div>
+</section>
+
+<div class="marquee-section">
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>ANYDAMS</span><span class="dot">&#9679;</span><span>STREETWEAR JAKARTA</span><span class="dot">&#9679;</span><span class="red">LIMITED EDITION</span><span class="dot">&#9679;</span><span>ANYTHING DAMSIK</span><span class="dot">&#9679;</span><span>ORIGINAL DESIGN</span><span class="dot">&#9679;</span><span>SS26 COLLECTION</span><span class="dot">&#9679;</span>
+      <span>ANYDAMS</span><span class="dot">&#9679;</span><span>STREETWEAR JAKARTA</span><span class="dot">&#9679;</span><span class="red">LIMITED EDITION</span><span class="dot">&#9679;</span><span>ANYTHING DAMSIK</span><span class="dot">&#9679;</span><span>ORIGINAL DESIGN</span><span class="dot">&#9679;</span><span>SS26 COLLECTION</span><span class="dot">&#9679;</span>
+    </div>
+  </div>
+  <div class="marquee-wrap reverse">
+    <div class="marquee-track">
+      <span>AUTHENTIC</span><span class="dot">&#9679;</span><span class="red">BUKAN KEMBAR</span><span class="dot">&#9679;</span><span>HANDMADE</span><span class="dot">&#9679;</span><span>LOKAL ASLI</span><span class="dot">&#9679;</span><span>DAMSIK VIBES</span><span class="dot">&#9679;</span>
+      <span>AUTHENTIC</span><span class="dot">&#9679;</span><span class="red">BUKAN KEMBAR</span><span class="dot">&#9679;</span><span>HANDMADE</span><span class="dot">&#9679;</span><span>LOKAL ASLI</span><span class="dot">&#9679;</span><span>DAMSIK VIBES</span><span class="dot">&#9679;</span>
+    </div>
+  </div>
+</div>
+
+<section id="tentang" class="about">
+  <div class="about-grid">
+    <div class="about-media reveal">
+      <div class="about-number">01</div>
+      <div class="about-img-block">
+        <img src="images/hoodie-odds.jpg" alt="ANYDAMS Hoodie" loading="lazy"/>
+        <div class="about-img-overlay"><span>SS26 / HOODIE ODDS</span></div>
+      </div>
+      <div class="about-stat-cards">
+        <div class="stat-card"><div class="stat-num" data-target="500">0</div><div class="stat-label">Pieces Sold</div></div>
+        <div class="stat-card accent-card"><div class="stat-num" data-target="12">0</div><div class="stat-label">Collections</div></div>
+        <div class="stat-card"><div class="stat-num" data-target="100">0</div><div class="stat-label">% Original</div></div>
+      </div>
+    </div>
+    <div class="about-right reveal delay-2">
+      <div class="section-eyebrow">Tentang Kami</div>
+      <h2 class="section-title">Bukan Sekadar<br>Brand <span class="thin">Biasa</span></h2>
+      <div class="about-divider"></div>
+      <p class="about-body">ANYDAMS lahir dari jalanan Jakarta &#8212; dari kultur yang hidup, bukan yang dibuat-buat. Kami percaya bahwa pakaian adalah ekspresi, bukan seragam.</p>
+      <p class="about-body">Setiap piece dirancang dengan tangan, dengan cerita, dengan tujuan. Limited. Authentic. Damsik.</p>
+      <div class="about-values">
+        <div class="value-item"><span class="value-icon">&#9670;</span><div><div class="value-title">LIMITED DROPS</div><div class="value-desc">Setiap koleksi dibuat terbatas. Kalau kehabisan, ya kehabisan.</div></div></div>
+        <div class="value-item"><span class="value-icon">&#9670;</span><div><div class="value-title">ORIGINAL DESIGN</div><div class="value-desc">Semua desain original dari tim ANYDAMS. Tidak ada tiruan.</div></div></div>
+        <div class="value-item"><span class="value-icon">&#9670;</span><div><div class="value-title">QUALITY FIRST</div><div class="value-desc">Material premium, jahitan kuat, layak dipakai bertahun-tahun.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="statement-banner">
+  <div class="statement-inner reveal">
+    <div class="statement-quote">&#8220;</div>
+    <p class="statement-text">Kenakan sesuatu yang<br><em>mencerminkan siapa kamu</em>,<br>bukan siapa orang lain.</p>
+  </div>
+</div>
+
+<section id="koleksi" class="koleksi">
+  <div class="koleksi-head">
+    <div><div class="section-eyebrow">Koleksi</div><h2 class="section-title">Drop <span class="thin">SS26</span></h2></div>
+    <div class="koleksi-head-right">
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">ALL</button>
+        <button class="filter-btn" data-filter="hoodie">HOODIE</button>
+        <button class="filter-btn" data-filter="pants">PANTS</button>
+        <button class="filter-btn" data-filter="jaket">JAKET</button>
+        <button class="filter-btn" data-filter="topi">CAP</button>
+        <button class="filter-btn" data-filter="shoes">SHOES</button>
+        <button class="filter-btn" data-filter="tshirt">TSHIRT</button>
+      </div>
+    </div>
+  </div>
+  <div class="product-grid" id="product-grid">
+
+    <div class="product-card reveal" data-category="hoodie" data-name="Hoodie Dams V2" data-price="Rp 350.000" data-desc="Exclusive premium heavy-weight hoodie with minimal ANYDAMS logo." data-img="images/hoodie_v2.png" data-hover-img="images/lookbook_sample.png">
+      <div class="product-img-wrap">
+        <div class="product-img"><img src="images/hoodie_v2.png" alt="Hoodie Dams V2" loading="lazy" class="main-img"/></div>
+        <div class="product-badges"><span class="badge-lim">PREV / SS26</span></div>
+        <div class="product-num">01</div>
+        <div class="product-hover">
+          <button class="btn-detail">DETAIL</button>
+          <button class="btn-add-cart">+ CART</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">HOODIE</div>
+        <div class="product-name">Hoodie Dams V2</div>
+        <div class="product-foot"><span class="product-price">Rp 350.000</span><span class="stock-badge ready">READY</span></div>
+      </div>
+    </div>
+
+    <div class="product-card reveal delay-1" data-category="jaket" data-name="Varsity Red" data-price="Rp 650.000" data-desc="Premium heavyweight varsity jacket with leather sleeves and embroidery details." data-img="images/varsity_red.png">
+      <div class="product-img-wrap">
+        <div class="product-img"><img src="images/varsity_red.png" alt="Varsity Red" loading="lazy"/></div>
+        <div class="product-badges"><span class="badge-hot">HOT DROP</span></div>
+        <div class="product-num">02</div>
+        <div class="product-hover">
+          <button class="btn-detail">DETAIL</button>
+          <button class="btn-add-cart">+ CART</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">JAKET</div>
+        <div class="product-name">Varsity anydams Red</div>
+        <div class="product-foot"><span class="product-price">Rp 650.000</span><span class="stock-badge ready">READY</span></div>
+      </div>
+    </div>
+
+    <div class="product-card reveal delay-2" data-category="pants" data-name="Cargo Tech V2" data-price="Rp 340.000" data-desc="Functional techwear cargo pants with multi-pockets and straps." data-img="images/cargo_v2.png">
+      <div class="product-img-wrap">
+        <div class="product-img"><img src="images/cargo_v2.png" alt="Cargo Tech V2" loading="lazy"/></div>
+        <div class="product-badges"><span class="badge-lim">LIMITED</span></div>
+        <div class="product-num">03</div>
+        <div class="product-hover">
+          <button class="btn-detail">DETAIL</button>
+          <button class="btn-add-cart">+ CART</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">PANTS</div>
+        <div class="product-name">Cargo Tech V2</div>
+        <div class="product-foot"><span class="product-price">Rp 340.000</span><span class="stock-badge ready">READY</span></div>
+      </div>
+    </div>
+
+    <div class="product-card reveal" data-category="topi" data-name="Cap Marlboro" data-price="Rp 120.000" data-desc="Dad cap washed cotton dengan embroidery ANYDAMS x Marlboro Damsik. Adjustable strap." data-img="images/cap-marlboro.jpg">
+      <div class="product-img-wrap">
+        <div class="product-img"><img src="images/cap-marlboro.jpg" alt="Cap Marlboro" loading="lazy"/></div>
+        <div class="product-badges"><span class="badge-lim">LIMITED</span></div>
+        <div class="product-num">04</div>
+        <div class="product-hover">
+          <button class="btn-detail">DETAIL</button>
+          <button class="btn-add-cart">+ CART</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">CAP</div>
+        <div class="product-name">Cap Marlboro</div>
+        <div class="product-foot"><span class="product-price">Rp 120.000</span><span class="stock-badge low">5 LEFT</span></div>
+      </div>
+    </div>
+
+    <div class="product-card reveal delay-1" data-category="shoes" data-name="Shoes ASICS Damsik" data-price="Rp 750.000" data-desc="Kolaborasi ASICS x ANYDAMS Damsik Edition. GEL cushioning original. Limited 50 pairs only." data-img="images/shoes-asics.jpg">
+      <div class="product-img-wrap">
+        <div class="product-img"><img src="images/shoes-asics.jpg" alt="Shoes ASICS Damsik" loading="lazy"/></div>
+        <div class="product-badges"><span class="badge-lim">COLLAB</span><span class="badge-hot">50 PAIRS</span></div>
+        <div class="product-num">05</div>
+        <div class="product-hover">
+          <button class="btn-detail">DETAIL</button>
+          <button class="btn-add-cart">+ CART</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">SHOES</div>
+        <div class="product-name">Shoes ASICS Damsik</div>
+        <div class="product-foot"><span class="product-price">Rp 750.000</span><span class="stock-badge low">2 LEFT</span></div>
+      </div>
+    </div>
+
+    <div class="product-card reveal delay-2" data-category="tshirt" data-name="T-Shirt Guest" data-price="Rp 175.000" data-desc="Kaos oversized Guest Series. Cotton combed 30s premium, sablon rubber tahan lama. Tersedia semua size." data-img="images/tshirt-guest.jpg">
+      <div class="product-img-wrap">
+        <div class="product-img"><img src="images/tshirt-guest.jpg" alt="T-Shirt Guest" loading="lazy"/></div>
+        <div class="product-badges"><span class="badge-ready">READY STOCK</span></div>
+        <div class="product-num">06</div>
+        <div class="product-hover">
+          <button class="btn-detail">DETAIL</button>
+          <button class="btn-add-cart">+ CART</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">T-SHIRT</div>
+        <div class="product-name">T-Shirt Guest</div>
+        <div class="product-foot"><span class="product-price">Rp 175.000</span><span class="stock-badge ready">READY</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="lookbook" class="lookbook">
+  <div class="lookbook-header reveal">
+    <div class="section-eyebrow">Lookbook</div>
+    <h2 class="section-title">Style <span class="thin">Guide</span></h2>
+  </div>
+  <div class="lookbook-grid">
+    <div class="lb-item lb-main">
+      <img src="images/lookbook_sample.png" alt="Lookbook Main" loading="lazy"/>
+      <div class="lb-caption"><span class="lb-tag">EDITORIAL / NIGHT</span><span class="lb-detail">ANYDAMS STREETWEAR SS/26 — JAKARTA STREETS</span></div>
+    </div>
+    <div class="lb-item lb-sm">
+      <img src="images/jaket-mclaren.jpg" alt="Lookbook 2" loading="lazy"/>
+      <div class="lb-caption"><span class="lb-tag">SS26 / LOOK 02</span><span class="lb-detail">Jaket McLaren</span></div>
+    </div>
+    <div class="lb-item lb-sm-b">
+      <img src="images/cap-marlboro.jpg" alt="Lookbook 3" loading="lazy"/>
+      <div class="lb-caption"><span class="lb-tag">ACCESSORIES</span><span class="lb-detail">Cap Marlboro</span></div>
+    </div>
+    <div class="lb-wide">
+      <div class="lb-wide-text">
+        <div class="section-eyebrow">Editorial</div>
+        <p>&#8220;Pakai apa yang kamu mau,<br>bukan apa yang orang minta.&#8221;</p>
+        <a href="https://wa.me/6281218216022" target="_blank" class="btn-main">Order Sekarang <span class="arrow">&#8594;</span></a>
+      </div>
+      <div class="lb-mid">
+        <img src="images/shoes-asics.jpg" alt="ASICS Damsik" loading="lazy"/>
+        <div class="lb-caption"><span class="lb-tag">COLLAB</span><span class="lb-detail">ASICS x ANYDAMS Damsik Edition</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-section">
+  <div class="testimonial-header reveal">
+    <div class="section-eyebrow">Testimonial</div>
+    <h2 class="section-title">Yang Udah <span class="thin">Pake</span></h2>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+      <p class="testi-text">&#8220;Hoodie Odds kualitasnya beneran bagus banget. Udah 6 bulan dipake tiap hari masih kenceng jahitannya. Worth it banget bro!&#8221;</p>
+      <div class="testi-author">
+        <div class="testi-avatar"><div class="testi-avatar-ph">RZ</div></div>
+        <div><div class="testi-name">Reza D.</div><div class="testi-loc">Jakarta Selatan</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal delay-1">
+      <div class="testi-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+      <p class="testi-text">&#8220;Jaket McLaren bener-bener cinematic sih. Tiap keluar pada nanya beli dimana. Response adminnya juga cepet banget pas order.&#8221;</p>
+      <div class="testi-author">
+        <div class="testi-avatar"><div class="testi-avatar-ph">AN</div></div>
+        <div><div class="testi-name">Andi N.</div><div class="testi-loc">Bandung</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal delay-2">
+      <div class="testi-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+      <p class="testi-text">&#8220;ASICS Damsik Edition-nya keren parah. Gua dapet yang ke-12 dari 50. Packagingnya rapi, pengiriman cepet. Recommended!&#8221;</p>
+      <div class="testi-author">
+        <div class="testi-avatar"><div class="testi-avatar-ph">FY</div></div>
+        <div><div class="testi-name">Fajar Y.</div><div class="testi-loc">Surabaya</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="info" class="info-section">
+  <div class="info-header reveal"><div class="section-eyebrow">Info</div><h2 class="section-title">Wajib <span class="thin">Tahu</span></h2></div>
+  <div class="info-grid">
+    <div class="info-card reveal">
+      <div class="info-num">01</div>
+      <div class="info-icon-wrap"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+      <h3>Cara Bayar</h3>
+      <p>Transfer Bank / QRIS / GoPay / OVO / Dana. Konfirmasi pembayaran via WhatsApp.</p>
+      <div class="info-detail">BCA / MANDIRI / GOPAY</div>
+    </div>
+    <div class="info-card reveal delay-1">
+      <div class="info-num">02</div>
+      <div class="info-icon-wrap"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect width="16" height="16" x="4" y="4" rx="2"/><path d="m9 12 2 2 4-4"/></svg></div>
+      <h3>Ukuran</h3>
+      <p>Tersedia S, M, L, XL. Size guide tersedia. Tanya admin untuk rekomendasi size yang tepat.</p>
+      <div class="info-detail">SIZE S / M / L / XL</div>
+    </div>
+    <div class="info-card reveal delay-2">
+      <div class="info-num">03</div>
+      <div class="info-icon-wrap"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+      <h3>Pengiriman</h3>
+      <p>Nationwide via J&amp;T / JNE / SiCepat. Khusus Jabodetabek bisa same-day. Packing rapi &amp; aman.</p>
+      <div class="info-detail">1-3 HARI KERJA</div>
+    </div>
+    <div class="info-card reveal delay-3">
+      <div class="info-num">04</div>
+      <div class="info-icon-wrap"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3>Garansi</h3>
+      <p>Garansi kualitas 7 hari. Cacat produksi? Kami ganti tanpa pertanyaan.</p>
+      <div class="info-detail">7 HARI GARANSI</div>
+    </div>
+  </div>
+</section>
+
+<section class="howto">
+  <div class="howto-header reveal"><div class="section-eyebrow">How To Order</div><h2 class="section-title">Cara <span class="thin">Order</span></h2></div>
+  <div class="howto-steps">
+    <div class="step reveal"><div class="step-num">01</div><div class="step-icon">&#128247;</div><div class="step-title">Pilih Produk</div><div class="step-desc">Browse koleksi di website, pilih item yang kamu mau. Catat nama produk dan size.</div></div>
+    <div class="step-arrow">&#8594;</div>
+    <div class="step reveal delay-1"><div class="step-num">02</div><div class="step-icon">&#128172;</div><div class="step-title">Chat WhatsApp</div><div class="step-desc">Hubungi kami via WA: Nama Produk + Size + Nama + Alamat Lengkap.</div></div>
+    <div class="step-arrow">&#8594;</div>
+    <div class="step reveal delay-2"><div class="step-num">03</div><div class="step-icon">&#128179;</div><div class="step-title">Bayar</div><div class="step-desc">Admin kirim total harga + ongkir. Transfer dan kirim bukti bayar.</div></div>
+    <div class="step-arrow">&#8594;</div>
+    <div class="step reveal delay-3"><div class="step-num">04</div><div class="step-icon">&#128230;</div><div class="step-title">Packing &amp; Kirim</div><div class="step-desc">Pesanan dikemas rapi dan dikirim dalam 1-2 hari kerja. Resi dikonfirmasi via WA.</div></div>
+  </div>
+  <div class="howto-cta reveal"><a href="https://wa.me/6281218216022" target="_blank" class="btn-main">Chat Sekarang <span class="arrow">&#8594;</span></a></div>
+</section>
+
+<section class="faq-section">
+  <div class="faq-wrap">
+    <div class="reveal">
+      <div class="section-eyebrow">FAQ</div>
+      <h2 class="section-title">Pertanyaan <span class="thin">Umum</span></h2>
+      <p class="faq-sub">Masih ada pertanyaan? Langsung tanya ke WhatsApp kami, kami respon cepat.</p>
+    </div>
+    <div class="faq-list reveal delay-1">
+      <div class="faq-item"><button class="faq-q">Apakah produk ANYDAMS original?<span class="faq-icon">+</span></button><div class="faq-a">Ya, 100% original. Semua produk ANYDAMS dirancang dan diproduksi sendiri. Tidak ada reseller atau tiruan yang kami akui.</div></div>
+      <div class="faq-item"><button class="faq-q">Berapa lama pengiriman?<span class="faq-icon">+</span></button><div class="faq-a">Jabodetabek bisa same-day. Luar kota 1-3 hari kerja via J&amp;T / JNE / SiCepat. Resi dikonfirmasi setelah barang dikirim.</div></div>
+      <div class="faq-item"><button class="faq-q">Bisa tukar ukuran tidak?<span class="faq-icon">+</span></button><div class="faq-a">Bisa, selama stok tersedia dan barang belum dipakai. Hubungi kami dalam 7 hari setelah barang diterima.</div></div>
+      <div class="faq-item"><button class="faq-q">Ada diskon untuk pembelian bulk?<span class="faq-icon">+</span></button><div class="faq-a">Ada! Untuk pembelian 5 pcs ke atas ada harga spesial. Hubungi admin via WhatsApp untuk negosiasi harga wholesale.</div></div>
+      <div class="faq-item"><button class="faq-q">Kapan drop koleksi baru?<span class="faq-icon">+</span></button><div class="faq-a">Drop koleksi baru setiap 2-3 bulan. Follow Instagram @anydams.id untuk info drop dan harga early bird.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter-section">
+  <div class="newsletter-inner">
+    <div class="newsletter-left reveal">
+      <div class="section-eyebrow">Stay Updated</div>
+      <h2 class="newsletter-title">Jangan<br>Ketinggalan Drop</h2>
+      <p class="newsletter-sub">Daftar dan dapatkan notifikasi koleksi baru, early access, dan promo eksklusif langsung ke WA kamu.</p>
+    </div>
+    <div class="newsletter-right reveal delay-2">
+      <form class="newsletter-form" id="newsletter-form">
+        <div class="newsletter-input-wrap">
+          <input type="tel" class="newsletter-input" id="newsletter-input" placeholder="+62 8xx xxxx xxxx"/>
+          <button type="submit" class="newsletter-submit">DAFTAR</button>
+        </div>
+        <span class="newsletter-note">&#9679; No spam. Hanya info penting. Bisa unsubscribe kapanpun.</span>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-eyebrow reveal">Ready to order?</div>
+  <h2 class="cta-title reveal delay-1">LETS<br>GO<br><span style="color:var(--accent)">DAMSIK</span></h2>
+  <p class="cta-sub reveal delay-2">Pesan sekarang sebelum kehabisan. Limited stock, no restock.</p>
+  <div class="cta-socials reveal delay-3">
+    <a href="https://wa.me/6281218216022" target="_blank" class="social-btn wa-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      WhatsApp Order
+    </a>
+    <a href="https://instagram.com/anydams.id" target="_blank" class="social-btn">&#9679; Instagram</a>
+    <a href="https://tiktok.com/@anydams.id" target="_blank" class="social-btn">&#9679; TikTok</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top-bar">
+    <span class="footer-logo-big">ANYDAMS</span>
+    <span class="footer-tagline">STREETWEAR JAKARTA SINCE 2023</span>
+  </div>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <div class="footer-brand-logo">AD</div>
+      <p>Brand streetwear lokal Jakarta yang percaya bahwa gaya adalah pernyataan, bukan seragam.</p>
+      <span class="footer-badge">SS26 COLLECTION</span>
+      <div class="footer-wa-btn"><a href="https://wa.me/6281218216022" target="_blank">&#9679; +62 812-1821-6022</a></div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-heading">Koleksi</div>
+      <ul>
+        <li><a href="#koleksi">Hoodie</a></li><li><a href="#koleksi">Jaket</a></li>
+        <li><a href="#koleksi">Pants</a></li><li><a href="#koleksi">T-Shirt</a></li>
+        <li><a href="#koleksi">Cap</a></li><li><a href="#koleksi">Shoes</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-heading">Info</div>
+      <ul>
+        <li><a href="#tentang">About Us</a></li><li><a href="#info">Cara Order</a></li>
+        <li><a href="#info">Pengiriman</a></li><li><a href="#info">Ukuran</a></li>
+        <li><span>Garansi 7 Hari</span></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-heading">Sosial</div>
+      <ul>
+        <li><a href="https://instagram.com/anydams.id" target="_blank">Instagram</a></li>
+        <li><a href="https://tiktok.com/@anydams.id" target="_blank">TikTok</a></li>
+        <li><a href="https://wa.me/6281218216022" target="_blank">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>ANYDAMS &#169; 2026. All rights reserved.</span>
+    <div class="footer-socials">
+      <a href="https://instagram.com/anydams.id" target="_blank">IG</a>
+      <a href="https://tiktok.com/@anydams.id" target="_blank">TT</a>
+      <a href="https://wa.me/6281218216022" target="_blank">WA</a>
+    </div>
+    <span class="footer-made">Jakarta, Indonesia</span>
+  </div>
+</footer>
+
+<div class="float-wa" id="float-wa">
+  <a href="https://wa.me/6281218216022" target="_blank" class="float-wa-btn" aria-label="Chat WhatsApp">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+  <span class="float-wa-label">Order via WA</span>
+</div>
+
+<div class="cart-overlay" id="cart-overlay"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-drawer-inner">
+    <div class="cart-header">
+      <div class="cart-title">KERANJANG BELANJA</div>
+      <button class="cart-close" id="cart-close">&#10005;</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+      <!-- Items injected via JS -->
+      <div class="cart-empty-state">
+        <div class="cart-empty-icon">&#128722;</div>
+        <p>Keranjang kamu masih kosong.</p>
+        <button class="btn-main" onclick="document.getElementById('cart-close').click()">MULAI BELANJA</button>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Subtotal</span>
+        <span class="cart-total-price" id="cart-total-price">Rp 0</span>
+      </div>
+      <p class="cart-footer-note">Pesanan kamu akan diteruskan ke WhatsApp untuk konfirmasi pembayaran &amp; pengiriman.</p>
+      <button class="btn-checkout" id="btn-checkout">
+        CHECKOUT KE WHATSAPP &#8594;
+      </button>
+    </div>
+  </div>
+</div>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8593;</button>
+
+<div class="modal" id="product-modal">
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+  <div class="modal-content">
+    <button class="modal-close" id="modal-close">&#10005;</button>
+    <div class="modal-body">
+      <div class="modal-img-wrap">
+        <div class="modal-img-bg" id="modal-img-bg"><div class="modal-img-ph" id="modal-img-ph">ANYDAMS</div></div>
+        <div class="modal-img-badge" id="modal-img-badge">LIMITED DROP</div>
+      </div>
+      <div class="modal-info">
+        <div class="modal-breadcrumb">ANYDAMS &#8250; <span id="modal-cat">KOLEKSI</span></div>
+        <div class="modal-title" id="modal-title">Nama Produk</div>
+        <div class="modal-price" id="modal-price">Rp 0</div>
+        <div class="modal-desc" id="modal-desc">Deskripsi produk.</div>
+        <div class="modal-sizes-section">
+          <span class="modal-sizes-label">SIZE CHART</span>
+          <div id="size-table">
+            <table>
+              <tr><th>SIZE</th><th>CHEST</th><th>LENGTH</th><th>SHOULDER</th></tr>
+              <tr><td>S</td><td>96 cm</td><td>68 cm</td><td>44 cm</td></tr>
+              <tr><td>M</td><td>100 cm</td><td>70 cm</td><td>46 cm</td></tr>
+              <tr><td>L</td><td>106 cm</td><td>73 cm</td><td>49 cm</td></tr>
+              <tr><td>XL</td><td>112 cm</td><td>76 cm</td><td>52 cm</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button id="modal-add-cart" class="btn-add-cart-large">+ TAMBAH KE KERANJANG</button>
+          <a href="#" id="modal-wa-btn" target="_blank" class="btn-wa-main">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            ORDER DIRECT WA
+          </a>
+          <span class="modal-note">&#9679; Limited stock &#8212; Order sekarang sebelum kehabisan</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
